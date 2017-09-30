@@ -1,8 +1,8 @@
 # Testing a HATEOAS service
 
-This post is a follow up post to a few that I have written recently relating to writing a HATEOAS service with Spring ([Applying HATEOAS to a REST API with Spring Boot](https://lankydanblog.com/2017/09/10/applying-hateoas-to-a-rest-api-with-spring-boot/) and [Global exception handling with @ControllerAdvice](https://lankydanblog.com/2017/09/12/global-exception-handling-with-controlleradvice/)). Now that we have looked through setting up a service and how to add some error handling, it's probably now worth writing some tests to ensure that it works as expected.
+This post is a follow up post to a few that I have written recently relating to writing a HATEOAS service with Spring ([Applying HATEOAS to a REST API with Spring Boot](https://tech.io/playgrounds/9d00def03a2a6ec70ee40f534d0ec9753276/applying-hateoas-to-a-rest-api-with-spring-boot) and [Global exception handling with @ControllerAdvice](https://tech.io/playgrounds/097365af8c2a311b2233a4f135a866145376/global-exception-handling-with-controlleradvice)). Now that we have looked through setting up a service and how to add some error handling, it's probably now worth writing some tests to ensure that it works as expected.
 
-There are a few extra dependencies that need to be added to allow the tests to be written. I have excluded the dependencies for setting up the HATEOAS service as they can be found in the previous post [here](https://lankydanblog.com/2017/09/10/applying-hateoas-to-a-rest-api-with-spring-boot/). `spring-boot-starter-test` is the default requirement for most tests when using Spring Boot and `hamcrest-core` allows us to assert the JSON returned in responses more easily.
+There are a few extra dependencies that need to be added to allow the tests to be written. I have excluded the dependencies for setting up the HATEOAS service as they can be found in the previous post [here](https://tech.io/playgrounds/9d00def03a2a6ec70ee40f534d0ec9753276/applying-hateoas-to-a-rest-api-with-spring-boot). `spring-boot-starter-test` is the default requirement for most tests when using Spring Boot and `hamcrest-core` allows us to assert the JSON returned in responses more easily.
 ```xml
 <dependency>
   <groupId>org.springframework.boot</groupId>
@@ -16,7 +16,7 @@ There are a few extra dependencies that need to be added to allow the tests to b
   <scope>test</scope>
 </dependency>
 ```
-Before we look at the test itself, lets have a look at the code that we are trying to test. The short story of the example below is that it is a HATEOAS service which returns a response that can contain an object plus links to relevant resources. For more information about what is going on refer to the previous post mentioned earlier (added again [here](https://lankydanblog.com/2017/09/10/applying-hateoas-to-a-rest-api-with-spring-boot/) if you still need to look at it).
+Before we look at the test itself, lets have a look at the code that we are trying to test. The short story of the example below is that it is a HATEOAS service which returns a response that can contain an object plus links to relevant resources. For more information about what is going on refer to the previous post mentioned earlier (added again [here](https://tech.io/playgrounds/9d00def03a2a6ec70ee40f534d0ec9753276/applying-hateoas-to-a-rest-api-with-spring-boot) if you still need to look at it).
 ```java
 @RestController
 @RequestMapping(value = "/people", produces = "application/hal+json")
